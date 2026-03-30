@@ -369,15 +369,48 @@ export default function App() {
 
         {/* Input Footer */}
         <div style={{ padding: isMobile ? '12px' : '20px', display: 'flex', justifyContent: 'center', backgroundColor: isDarkMode ? 'transparent' : '#ffffff', backgroundImage: isDarkMode ? 'linear-gradient(to top, #0f172a 50%, transparent)' : 'none', zIndex: 10 }}>
-          <div style={{ width: '100%', maxWidth: '700px', position: 'relative' }}>
+          <div style={{ width: '100%', maxWidth: '700px', position: 'relative', display: 'flex', alignItems: 'center' }}>
             <textarea 
-              value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={handleKeyPress} disabled={isLoading}
-              placeholder="Message Diet Engine..." rows={1}
-              style={{ width: '100%', padding: '16px 50px 16px 20px', borderRadius: '24px', backgroundColor: theme.inputBg, border: `1px solid ${theme.border}`, fontSize: '1rem', outline: 'none', color: theme.textMain, resize: 'none', fontFamily: 'inherit', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}
+              value={input} 
+              onChange={(e) => setInput(e.target.value)} 
+              onKeyDown={handleKeyPress} 
+              disabled={isLoading}
+              placeholder="Message Diet Engine..." 
+              rows={1}
+              style={{ 
+                width: '100%', 
+                padding: '16px 56px 16px 20px', // Increased right padding to clear the button
+                borderRadius: '24px', 
+                backgroundColor: theme.inputBg, 
+                border: `1px solid ${theme.border}`, 
+                fontSize: '1rem', 
+                outline: 'none', 
+                color: theme.textMain, 
+                resize: 'none', 
+                fontFamily: 'inherit', 
+                boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+                lineHeight: '1.5'
+              }}
             />
             <button 
-              onClick={() => sendMessage(input)} disabled={isLoading || !input.trim()}
-              style={{ position: 'absolute', right: '8px', top: '8px', bottom: '8px', width: '36px', backgroundColor: input.trim() ? theme.accent : theme.border, color: input.trim() ? 'white' : theme.textMuted, border: 'none', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: isLoading || !input.trim() ? 'not-allowed' : 'pointer', transition: 'all 0.2s' }}
+              onClick={() => sendMessage(input)} 
+              disabled={isLoading || !input.trim()}
+              style={{ 
+                position: 'absolute', 
+                right: '12px', // Added proper margin from the right edge
+                width: '32px', 
+                height: '32px', 
+                backgroundColor: input.trim() ? theme.accent : 'transparent', 
+                color: input.trim() ? 'white' : theme.textMuted, 
+                border: 'none', 
+                borderRadius: '50%', 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center', 
+                cursor: isLoading || !input.trim() ? 'not-allowed' : 'pointer', 
+                transition: 'all 0.2s',
+                zIndex: 2
+              }}
             >
               <SendIcon />
             </button>
