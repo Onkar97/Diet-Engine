@@ -142,7 +142,7 @@ export default function App() {
       // Inject the selected objective into the AI prompt
       historyForBackend.push({ role: 'user', content: `[Focus: ${activeObjective}] ${userMessage}` });
 
-      const response = await fetch('http://localhost:8000/api/generate-meal/', {
+      const response = await fetch('https://diet-engine-api.onrender.com/api/generate-meal/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ household_id: 1, messages: historyForBackend })
